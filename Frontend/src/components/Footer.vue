@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <footer class="absolute flex bottom-0 border w-full justify-around p-6 md:hidden">
+    <footer class="fixed flex bottom-0 border w-full justify-around p-4 md:hidden bg-white">
     <div class="block justify-center items-center">
       <div class="flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
