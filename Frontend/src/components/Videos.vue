@@ -9,11 +9,11 @@
             </div>
         </div>
         <div class="video-list rounded h-[520px] overflow-y-scroll">
-            <div class="flex items-center gap-4 m-2 p-4 rounded border cursor-pointer bg-blue-100 hover:bg-blue-300">
+            <div class="flex items-center gap-4 m-2 p-4 rounded border cursor-pointer shadow hover:bg-gray-100">
                 <video class="w-1/4 rounded" src="/videos/fitness01.mp4" muted></video>
                 <h3 class="px-4">01. video title goes here</h3>
             </div>
-            <div class="flex items-center gap-4 m-2 p-4 rounded border cursor-pointer bg-blue-100 hover:bg-blue-300">
+            <div class="flex items-center gap-4 m-2 p-4 rounded border cursor-pointer shadow hover:bg-gray-100">
                 <video class="w-1/4 rounded" src="/videos/fitness01.mp4" muted></video>
                 <h3 class="px-4">01. video title goes here</h3>
             </div>

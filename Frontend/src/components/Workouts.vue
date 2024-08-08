@@ -1,6 +1,8 @@
 <script setup>
 import MealPlans from '@/components/MealPlans.vue'
 import Videos from '@/components/Videos.vue'
+import { ref } from 'vue'
+const infoDropdown = ref(false)
 </script>
 <template>
     <section class="container mx-auto p-4 block  mt-10 space-y-4 mb-20">
@@ -9,7 +11,16 @@ import Videos from '@/components/Videos.vue'
                 <img src="/images/2150404901.jpg" alt="" class="object-fit lg:w-1/2">
                 <div class="block p-4">
                     <div class="block space-y-2">
-                        <h2 class="text-lime-500">Day 1</h2>
+                        <div class="flex justify-between">
+                            <h2 class="text-lime-500 text-lg">Day 1</h2>
+                            <span @click="infoDropdown = !infoDropdown" class="p-2 relative cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hover:text-red-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                </svg>
+                                    <button v-show="infoDropdown" @mouseleave="infoDropdown = false" @click.away="infoDropdown = false"
+                                     class="absolute h-10 w-40 border right-0 py-4 px-2 rounded bg-white flex items-center justify-center shadow p-2 hover:bg-red-500 hover:text-white cursor-pointer">Stop this plan</button>
+                            </span>
+                        </div>
                         <h1 class="text-xl font-bold underline">WARM UP</h1>
                         <p>5 rounds of:</p>
                         <ol class="px-6">
@@ -32,7 +43,6 @@ import Videos from '@/components/Videos.vue'
                             <button class="p-2 border rounded text-white mt-10 bg-blue-700 w-3/4 md:w-1/2 hover:bg-blue-500">Mark As Completed</button>
                         </div>
                     </div>
-
                 </div>
             </div>
             <MealPlans />

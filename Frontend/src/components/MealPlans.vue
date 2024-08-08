@@ -19,6 +19,6 @@
                 <h1 class="font-bold p-2 text-lime-500">Snack</h1>
                 <p>Apple slices with almond butter</p>
             </div>
-        </section>
+        </section> 
     </div>
 </template>
