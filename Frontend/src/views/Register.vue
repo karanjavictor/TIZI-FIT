@@ -2,6 +2,8 @@
 import Spinner from '../components/Spinner.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const router = useRouter()
 const formData = ref({
   email: '',
@@ -17,7 +19,7 @@ const togglePassword = () => {
 const register = async () => {
   show.value = true;
     try {
-    const response = await axios.post('/api/register', formData.value, 
+    const response = await axios.post(`${BASE_URL}/api/register`, formData.value, 
     {
       withCredentials: true
     });
@@ -28,11 +30,7 @@ const register = async () => {
     router.push({ name: 'home' });
   } catch (error) {
     if (error.response) {
-        if(error.response.data.error){
-            toast.fire({icon: "error", title: error.response.data.error})
-        } else {
-            toast.fire({icon: "error", title: error.response.data[0]})
-        }
+      toast.fire({icon: "error", title: error.response.data.error})
     } else if (error.request) {
       toast.fire({icon: "error", title: "Network error or server not available"})
     } else {
@@ -46,7 +44,7 @@ const register = async () => {
 </script>
 <template>
     <div class="flex justify-center items-center m-2 py-6 px-2 md:p-16 md:my-2 md:mx-auto max-w-3xl">
-    <form @submit.prevent="sendEmail" class="w-full my-0 mx-auto border rounded-md p-6 shadow-xl space-y-6 md:w-4/5">
+    <form @submit.prevent="register" class="w-full my-0 mx-auto border rounded-md p-6 shadow-xl space-y-6 md:w-4/5">
       <span class="text-xl">Sign Up</span>
       <div class="space-y-2">
         <label for="">Email</label>

@@ -2,6 +2,8 @@
 import Spinner from '../components/Spinner.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const router = useRouter()
 const formData = ref({
   email: '',
@@ -17,23 +19,21 @@ const togglePassword = () => {
 const login = async () => {
   show.value = true;
     try {
-    const response = await axios.post('/api/login', formData.value, 
-    {
-      withCredentials: true
-    });
-    const { data: { message, name } } = response;
+      const response = await axios.post(`${BASE_URL}/api/login`, formData.value,
+      {
+        withCredentials: true
+      }
+    );
+    const { data: { message, email} } = response;
     formData.value.email = '';
     formData.value.password = '';
     toast.fire({icon: "success", title: message});
     router.push({ name: 'home' });
   } catch (error) {
+    console.log(error)
     if (error.response) {
-        if(error.response.data.error){
-            toast.fire({icon: "error", title: error.response.data.error})
-        } else {
-            toast.fire({icon: "error", title: error.response.data[0]})
-        }
-    } else if (error.request) {
+      toast.fire({icon: "error", title: error.response.data.error})
+    }  else if (error.request) {
       toast.fire({icon: "error", title: "Network error or server not available"})
     } else {
       toast.fire({icon: "error", title: "An error occurred"});
